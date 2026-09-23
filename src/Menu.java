@@ -5,9 +5,8 @@ public class Menu {
 
     static void printMenu(Scanner scanner) {
         int input;
-        boolean running = true;
 
-        while (running) {
+        while (true) {
             System.out.println("Меню:");
             System.out.println("1. Начать игру:");
             System.out.println("2. Вывести список лучших результатов");
@@ -24,15 +23,42 @@ public class Menu {
             }
 
             switch(input) {
-                case 1: {
-                    Game.printGameMenu(scanner);
-                }
-
-                case 2: {
-
-                }
+                case 1: Game.printGameMenu(scanner);
+                break;
+                case 2: LeaderBoard.printLeaderBoard();
+                break;
+                case 3: System.out.println("До скорых встреч!");
+                return;
             }
         }
 
     }
+
+    static void additionalMenu(Scanner scanner) {
+
+        while (true) {
+
+            int input;
+
+            System.out.println("Сыграем еще раз?");
+            System.out.println("1. Да, вперед!:");
+            System.out.println("2. Вернутся в меню");
+
+            try {
+                input = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Нужно вводить число!");
+                scanner.next();
+                continue;
+            }
+
+            switch (input) {
+                case 1: Game.printGameMenu(scanner);
+                break;
+                case 2: Menu.printMenu(scanner);
+                break;
+            }
+        }
+    }
 }
+

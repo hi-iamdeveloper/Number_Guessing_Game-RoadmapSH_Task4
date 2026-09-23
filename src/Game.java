@@ -4,6 +4,8 @@ import java.util.Random;
 
 public class Game {
 
+    private static final Random RANDOM = new Random();
+
     static void printGameMenu(Scanner scanner) {
 
         int input;
@@ -38,12 +40,39 @@ public class Game {
     static void startGame(Difficulty difficulty, Scanner scanner) {
 
         Random random = new Random();
-        int number = random.nextInt(1, 101);   // 1..100
 
+        int number = RANDOM.nextInt(1 ,101);   // 1..100
         int attempts = difficulty.getAttempts();
 
-        for(int i = 0; i < attempts; i++) {
-            System.out.println("Я загадал число от 1 до 100 - угадывай!");
+        System.out.println("Я загадал число от 1 до 100 - угадывай!");
+        for (int i = 0; i < attempts; i++) {
+            System.out.println("Осталось попыток: " + (attempts - i));
+            int guess = readInt(scanner, "Твоя догадка: ");
+
+            if (guess == number) {
+                System.out.println("Поздравляю! Ты угадал за " + (i + 1) + " попыток.");
+                System.out.print("Введи своё имя: ");
+                String name = scanner.next();
+                Menu.additionalMenu(scanner);
+                return;
+
+            } else if (guess < number) {
+                System.out.println("Загаданное число больше.");
+            } else {
+                System.out.println("Загаданное число меньше.");
+            }
+        }
+
+        System.out.println("Попытки кончились. Было загадано: " + number);
+        Menu.additionalMenu(scanner);
+    }
+
+    private static int readInt(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            if (scanner.hasNextInt()) return scanner.nextInt();
+            System.out.println("Нужно вводить число!");
+            scanner.next();
         }
     }
 }
