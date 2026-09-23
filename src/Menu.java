@@ -25,7 +25,7 @@ public class Menu {
 
             switch(input) {
                 case 1: {
-                    Game.printGameMenu();
+                    Game.printGameMenu(scanner);
                 }
 
                 case 2: {
