@@ -30,7 +30,7 @@ Java-приложение, в котором компьютер загадыва
 | `Menu` | Главное меню, цикл партий, обработка выбора игрока |
 | `Game` | Логика одной партии: загадывание, чтение догадок, подсказки |
 | `Difficulty` | Enum сложностей с числом попыток и названием |
-| `Player` | Одно результат игрока: имя, попытки, сложность |
+| `Player` | Один результат игрока: имя, попытки, сложность |
 | `LeaderBoard` | Хранение и вывод топ-3 результатов по каждой сложности |
 
 ### Ответственности классов
@@ -218,4 +218,14 @@ Menu.printMenu(scanner);
 - **`java.util.Comparator`** — сортировка результатов.
 - **`switch`-выражения** — для выбора сложности.
 
-**https://roadmap.sh/projects/number-guessing-game**
+---
+
+<p align="center">
+  <a href="https://roadmap.sh/projects/number-guessing-game">
+    <img src="https://img.shields.io/badge/roadmap.sh-Number%20Guessing%20Game-blue?style=for-the-badge" alt="roadmap.sh">
+  </a>
+</p>
+
+<p align="center">
+  <i>Проект выполнен в рамках <a href="https://roadmap.sh/projects/number-guessing-game">roadmap.sh</a></i>
+</p>
