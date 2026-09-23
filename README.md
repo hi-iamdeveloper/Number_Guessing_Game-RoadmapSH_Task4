@@ -217,3 +217,5 @@ Menu.printMenu(scanner);
 - **`java.util.Random`** — генерация чисел. Один экземпляр на класс.
 - **`java.util.Comparator`** — сортировка результатов.
 - **`switch`-выражения** — для выбора сложности.
+
+**https://roadmap.sh/projects/number-guessing-game**
