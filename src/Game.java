@@ -16,14 +16,7 @@ public class Game {
             System.out.println("2. Средняя (5 попыток)");
             System.out.println("3. Сложная (3 попытки)");
 
-            try {
-                input = scanner.nextInt();
-
-            } catch (InputMismatchException e) {
-                System.out.println("Нужно вводить число!");
-                scanner.next();
-                continue;
-            }
+            input = readInt(scanner, "Твой выбор: ");
 
             switch (input) {
                 case 1: Game.startGame(Difficulty.EASY, scanner);
@@ -67,7 +60,7 @@ public class Game {
         Menu.additionalMenu(scanner);
     }
 
-    private static int readInt(Scanner scanner, String prompt) {
+    public static int readInt(Scanner scanner, String prompt) {
         while (true) {
             System.out.print(prompt);
             if (scanner.hasNextInt()) return scanner.nextInt();

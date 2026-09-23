@@ -1,4 +1,3 @@
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -11,16 +10,8 @@ public class Menu {
             System.out.println("1. Начать игру:");
             System.out.println("2. Вывести список лучших результатов");
             System.out.println("3. Покинуть игру");
-            System.out.println("Твой выбор: ");
 
-            try {
-                input = scanner.nextInt();
-
-            } catch (InputMismatchException e) {
-                System.out.println("Нужно вводить число!");
-                scanner.next();
-                continue;
-            }
+            input = Game.readInt(scanner, "Твой выбор: ");
 
             switch(input) {
                 case 1: Game.printGameMenu(scanner);
@@ -44,13 +35,7 @@ public class Menu {
             System.out.println("1. Да, вперед!:");
             System.out.println("2. Вернутся в меню");
 
-            try {
-                input = scanner.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Нужно вводить число!");
-                scanner.next();
-                continue;
-            }
+            input = Game.readInt(scanner, "Твой выбор: ");
 
             switch (input) {
                 case 1: Game.printGameMenu(scanner);
