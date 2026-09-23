@@ -32,28 +32,41 @@ public class Game {
 
     static void startGame(Difficulty difficulty, Scanner scanner) {
 
-        Random random = new Random();
+        boolean tookHint = false;
 
         int number = RANDOM.nextInt(1 ,101);   // 1..100
         int attempts = difficulty.getAttempts();
+        int attempt = 1;
 
         System.out.println("Я загадал число от 1 до 100 - угадывай!");
-        for (int i = 0; i < attempts; i++) {
-            System.out.println("Осталось попыток: " + (attempts - i));
-            int guess = readInt(scanner, "Твоя догадка: ");
+
+        while (attempt <= attempts) {
+            System.out.println("Осталось попыток: " + (attempts - attempt + 1));
+            int guess = readInt(scanner, "Твоя догадка (0 — подсказка): ");
 
             if (guess == number) {
-                System.out.println("Поздравляю! Ты угадал за " + (i + 1) + " попыток.");
+                System.out.println("Поздравляю! Ты угадал за " + attempt + " попыток.");
                 System.out.print("Введи своё имя: ");
                 String name = scanner.next();
                 Menu.additionalMenu(scanner);
                 return;
 
+            } else if (guess == 0) {
+                if (!tookHint) {
+                    System.out.println("Подсказка: число " + (number % 2 == 0 ? "чётное" : "нечётное"));
+                    tookHint = true;
+                } else {
+                    System.out.println("Ты уже брал подсказку!");
+                }
+                continue;
+
             } else if (guess < number) {
                 System.out.println("Загаданное число больше.");
+
             } else {
                 System.out.println("Загаданное число меньше.");
             }
+            attempt++;
         }
 
         System.out.println("Попытки кончились. Было загадано: " + number);
